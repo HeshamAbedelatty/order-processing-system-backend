@@ -18,11 +18,11 @@ class OrderSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Order
-        fields = ('id', 'customer','total_amount', 'created_at')
+        fields = ('id', 'customer','total_amount','paid', 'created_at')
 
-class OrderItemSerializer(serializers.ModelSerializer):
-    
-    class Meta:
-        model = OrderItem
-        fields = ('id', 'product', 'quantity')
-
+class PaymentSerializer(serializers.Serializer):
+    amount = serializers.DecimalField(max_digits=10, decimal_places=2)
+    card_number = serializers.CharField(max_length=16)  # Dummy data for testing
+    expiry_date = serializers.CharField(max_length=5)  # Dummy data for testing
+    cvv = serializers.CharField(max_length=3)  # Dummy data for testing
+    order_id = serializers.IntegerField()
