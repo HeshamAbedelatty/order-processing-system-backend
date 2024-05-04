@@ -61,6 +61,165 @@ The Order Processing System relies on the following dependencies:
 
 ## Endpoints
 
+### 1. `/products/`
+
+- **Method:** GET
+- **Description:** Retrieve a list of all products.
+- **Notes:**
+  - Requires authentication.
+  - Only authenticated users can access this endpoint.
+- **Example:**
+  ```http
+  GET /products/
+  ```
+  **Response:**
+  ```json
+  [
+    {
+      "id": 1,
+      "name": "Product A",
+      "description": "Description of Product A",
+      "price": 50.00,
+      "stock": 100
+    },
+    {
+      "id": 2,
+      "name": "Product B",
+      "description": "Description of Product B",
+      "price": 30.00,
+      "stock": 50
+    }
+  ]
+  ```
+
+### 2. `/place_order/`
+
+- **Method:** POST
+- **Description:** Place a new order.
+- **Notes:**
+  - Requires authentication.
+  - Only authenticated users can access this endpoint.
+  - Requires providing a list of items in the request body.
+- **Example:**
+  ```http
+  POST /place_order/
+  ```
+  **Request Body:**
+  ```json
+  {
+    "items": [
+      {"productName": "Product A", "quantity": 2},
+      {"productName": "Product B", "quantity": 1}
+    ]
+  }
+  ```
+  **Response:**
+  ```json
+  {
+    "id": 1,
+    "customer": "username",
+    "total_amount": 130.00,
+    "paid": false,
+    "created_at": "2024-05-04T12:00:00Z"
+  }
+  ```
+
+### 3. `/orders/`
+
+- **Method:** GET
+- **Description:** Retrieve a list of orders placed by the authenticated user.
+- **Notes:**
+  - Requires authentication.
+  - Only authenticated users can access this endpoint.
+- **Example:**
+  ```http
+  GET /orders/
+  ```
+  **Response:**
+  ```json
+  [
+    {
+      "id": 1,
+      "customer": "username",
+      "total_amount": 130.00,
+      "paid": false,
+      "created_at": "2024-05-04T12:00:00Z"
+    }
+  ]
+  ```
+
+### 4. `/make_payment/`
+
+- **Method:** POST
+- **Description:** Process payment for an order.
+- **Notes:**
+  - Requires authentication.
+  - Only authenticated users can access this endpoint.
+  - Requires providing order ID in the request body.
+- **Example:**
+  ```http
+  POST /make_payment/
+  ```
+  **Request Body:**
+  ```json
+  {
+    "order_id": 1,
+    "amount": 130.00,
+    "card_number": "1234567890123456",
+    "expiry_date": "12/24",
+    "cvv": "123"
+  }
+  ```
+  **Response:**
+  ```json
+  {
+    "message": "Payment successful",
+    "order_data": {
+      "order_id": 1,
+      "total_amount": 130.00,
+      "created_at": "2024-05-04T12:00:00Z",
+      "items": [
+        {
+          "product": "Product A",
+          "price": 50.00,
+          "quantity": 2,
+          "totalprice": 100.00
+        },
+        {
+          "product": "Product B",
+          "price": 30.00,
+          "quantity": 1,
+          "totalprice": 30.00
+        }
+      ]
+    }
+  }
+  ```
+
+### 5. `/orders/`
+
+- **Method:** GET
+- **Description:** Retrieve a list of orders belonging to the authenticated user.
+- **Notes:**
+  - Requires authentication.
+  - Only authenticated users can access this endpoint.
+  - Returns orders filtered by the authenticated user.
+- **Example:**
+  ```http
+  GET /orders/
+  ```
+  **Response:**
+  ```json
+  [
+    {
+      "id": 1,
+      "customer": "username",
+      "total_amount": 130.00,
+      "paid": false,
+      "created_at": "2024-05-04T12:00:00Z"
+    }
+  ]
+  ```
 
 ### Postman Documentation
 For detailed documentation and testing of the endpoints, refer to the [Postman documentation](https://www.postman.com/winter-meteor-327606/workspace/appgain-backendtask/collection/31151980-17fc9f0b-5c38-46d6-ab25-2a0e2cbe5893?action=share&creator=31151980).
