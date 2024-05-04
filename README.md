@@ -82,11 +82,11 @@ The Order Processing System relies on the following dependencies:
 For detailed documentation and testing of the endpoints, refer to the [Postman documentation](https://www.postman.com/winter-meteor-327606/workspace/appgain-backendtask/collection/31151980-17fc9f0b-5c38-46d6-ab25-2a0e2cbe5893?action=share&creator=31151980).
 note that it may not be opened in Microsoft Edge. open it in Chrome.
 
-## admin App:
+## Admin App:
 
 ### you can open admin page by email:hesham@gmail.com , password: hesham2002
 
-### accounts App:
+## accounts App:
 
 #### 1. `/register/`
 
@@ -197,7 +197,7 @@ Regarding setting up authentication in Postman, follow these steps:
 8. For subsequent requests that require authentication, add the access token to the request headers:
    - Create a new header with key `Authorization` and value `Bearer <access_token>`.
 
-### Store App:
+## Store App:
 
 #### 1. `/products/`
 
