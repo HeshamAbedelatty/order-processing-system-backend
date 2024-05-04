@@ -1,67 +1,71 @@
-### Setting up Virtual Environment (venv)
+# Order Processing System Documentation
 
-1. **Install Python**: Ensure Python is installed on your system. You can download and install Python from [Python's official website](https://www.python.org/downloads/).
+## Introduction
+This documentation provides instructions on setting up and running the Order Processing System, a simplified solution for managing orders in an online store. The system handles various aspects of order processing, including stock management, payment processing, sending order confirmation emails, and error handling.
 
-2. **Create a Project Directory**: Create a directory for your project.
+## Setup
 
-3. **Create Virtual Environment**: Open a terminal, navigate to your project directory, and run the following command to create a virtual environment named 'venv':
-   ```
-   python -m venv venv
-   ```
+### Docker Setup
+To run the Order Processing System using Docker, follow these steps:
 
-4. **Activate Virtual Environment**: Activate the virtual environment:
-   - On Windows:
-     ```
-     venv\Scripts\activate
-     ```
-   - On Unix or MacOS:
-     ```
-     source venv/bin/activate
-     ```
-
-5. **Install Dependencies**: With the virtual environment activated, install the required dependencies using pip:
-   ```
-   pip install -r requirements.txt
+1. Clone the repository:
+   ```bash
+   git clone <repository_url>
+   cd order-processing-system
    ```
 
-### Setting up with Docker
-
-1. **Install Docker**: Download and install Docker Desktop from [Docker's official website](https://www.docker.com/products/docker-desktop).
-
-2. **Create Dockerfile**: Create a Dockerfile in the root directory of your project. Here's a sample Dockerfile for a Django project using DRF:
-   ```Dockerfile
-   # Use official Python image as base image
-   FROM python:3.9
-
-   # Set environment variables
-   ENV PYTHONDONTWRITEBYTECODE 1
-   ENV PYTHONUNBUFFERED 1
-
-   # Set working directory
-   WORKDIR /app
-
-   # Install dependencies
-   COPY requirements.txt /app/
-   RUN pip install --no-cache-dir -r requirements.txt
-
-   # Copy project files
-   COPY . /app/
-
-   # Expose port
-   EXPOSE 8000
-
-   # Command to run the application
-   CMD ["python", "manage.py", "runserver", "0.0.0.0:8000"]
-   ```
-
-3. **Build Docker Image**: Open a terminal, navigate to your project directory, and run the following command to build the Docker image:
-   ```
+2. Build the Docker image:
+   ```bash
    docker build -t order-processing-system .
    ```
 
-4. **Run Docker Container**: After successfully building the Docker image, run the Docker container using the following command:
-   ```
+3. Run the Docker container:
+   ```bash
    docker run -p 8000:8000 order-processing-system
    ```
 
-With these steps, you've set up a virtual environment for local development and configured Docker for containerization of your Order Processing System.
+### Virtual Environment Setup
+If you prefer not to use Docker, you can set up the project using a virtual environment. Follow these steps:
+
+1. Clone the repository:
+   ```bash
+   git clone <repository_url>
+   cd order-processing-system
+   ```
+
+2. Create and activate a virtual environment:
+   ```bash
+   python3 -m venv venv
+   source venv/bin/activate  # for Linux/macOS
+   # or
+   venv\Scripts\activate  # for Windows
+   ```
+
+3. Install dependencies:
+   ```bash
+   pip install -r requirements.txt
+   ```
+
+4. Run the Django server:
+   ```bash
+   python manage.py runserver
+   ```
+
+## Dependencies
+The Order Processing System relies on the following dependencies:
+- Django: Web framework for building the application.
+- Django REST Framework (DRF): Toolkit for building Web APIs.
+- Requests: HTTP library for making requests to external services.
+- Django REST Framework SimpleJWT: Library for JWT authentication.
+
+## Endpoints
+
+
+### Postman Documentation
+For detailed documentation and testing of the endpoints, refer to the [Postman documentation]().
+
+## Additional Features
+- **User Authentication:** Basic user authentication is implemented to ensure only registered users can place orders.
+- **Customization:** Email templates for order confirmation emails can be customized.
+
+
