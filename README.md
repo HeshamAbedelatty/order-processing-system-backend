@@ -60,8 +60,8 @@ The Order Processing System relies on the following dependencies:
 - Django REST Framework SimpleJWT: Library for JWT authentication.
 
 ## Endpoints
-
-### 1. `/products/`
+### Store App
+#### 1. `/products/`
 
 - **Method:** GET
 - **Description:** Retrieve a list of all products.
