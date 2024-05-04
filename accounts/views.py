@@ -4,9 +4,12 @@ from rest_framework_simplejwt.tokens import RefreshToken
 from .serializers import UserSerializer, LoginSerializer
 from rest_framework import permissions
 
+# Create a view for user registration using the UserSerializer (POST request)
 class SignupAPIView(generics.CreateAPIView):
     serializer_class = UserSerializer
 
+# Create a view for user login using the LoginSerializer (POST request) 
+# The view returns a refresh and access token if the credentials are valid
 class LoginAPIView(generics.GenericAPIView):
     serializer_class = LoginSerializer
 
@@ -19,7 +22,8 @@ class LoginAPIView(generics.GenericAPIView):
             'refresh': str(refresh),
             'access': str(refresh.access_token)
         }, status=status.HTTP_200_OK)
-        
+
+# Create a view for retrieving only the details of user if the user is authenticated (GET request) 
 class UserRetrieveAPIView(generics.RetrieveAPIView):
     serializer_class = UserSerializer
     permission_classes = [permissions.IsAuthenticated]

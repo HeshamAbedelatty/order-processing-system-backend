@@ -2,6 +2,7 @@ from rest_framework import serializers
 from .models import CustomUser
 from django.contrib.auth import authenticate
 
+# Create a serializer class for the CustomUser model
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = CustomUser
@@ -11,7 +12,9 @@ class UserSerializer(serializers.ModelSerializer):
     def create(self, validated_data):
         user = CustomUser.objects.create_user(**validated_data)
         return user
-    
+
+# Create a serializer class for the login endpoint that validates the email and password 
+# and returns the user instance if the credentials are valid 
 class LoginSerializer(serializers.Serializer):
     email = serializers.EmailField()
     password = serializers.CharField(style={'input_type': 'password'})
