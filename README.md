@@ -65,6 +65,8 @@ The Order Processing System relies on the following dependencies:
 ### Postman Documentation
 For detailed documentation and testing of the endpoints, refer to the [Postman documentation](https://www.postman.com/winter-meteor-327606/workspace/appgain-backendtask/collection/31151980-17fc9f0b-5c38-46d6-ab25-2a0e2cbe5893?action=share&creator=31151980).
 
+![Postman image](Postman.jpg)
+
 ## Docker Hub
 This is the Docker Hub repository containing the latest Docker image of the Order Processing System.
 [Docker Hub Submission](https://hub.docker.com/layers/heshamabedelatty/orderprocessingsystem/latest/images/sha256:eb6c8e565458978e28e175ba9a8b1f4a0ed519b2b416e87eb97b186a02ede107?uuid=6FE18E5C-6512-470D-8941-547B5CDC0CEE)
