@@ -7,6 +7,9 @@ WORKDIR /OrderProcessingSystem
 # Copy the requirements file into the container
 COPY requirements.txt .
 
+# Upgrade pip
+RUN pip install --upgrade pip
+
 # Install Python dependencies
 RUN pip install -r requirements.txt
 
