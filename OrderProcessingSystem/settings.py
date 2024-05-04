@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     'rest_framework',
     'accounts',
     'store',
+    'allauth',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -97,6 +98,15 @@ SIMPLE_JWT = {
     'REFRESH_TOKEN_LIFETIME': timedelta(days=356),
 }
 
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = 'mohamed9999ah@gmail.com'
+EMAIL_HOST_PASSWORD = 'mdhmvhapwmpiaued'
+
+
+# Password validation settings by stripe but not used
 STRIPE_SECRET_KEY = 'sk_test_51PCToHCyVIppCGjU9ueXcKnLICmHZAUWkXTxvHhZKxkxJyZG1LqbYmakFi8RfZtOoZ5fRB4bXeAj6iI4hSmZLFKL00pioxeXzh'
 STRIPE_PUBLISHABLE_KEY = 'pk_test_51PCToHCyVIppCGjUFFyh7xktriVyodawArqo1JhbDIIwYrypelCCBvzgETm43PVwjiLINQ4fJ3LVHfBZxkhsTfrh00HRDai0tk'
 

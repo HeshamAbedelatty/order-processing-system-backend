@@ -55,13 +55,14 @@ class OrderListView(viewsets.ModelViewSet):
     
     
 
-            
-
-
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from .serializers import PaymentSerializer
+from django.core.mail import EmailMultiAlternatives
+from django.template.loader import render_to_string
+from allauth.account.utils import send_email_confirmation
+from django.core.mail import send_mail
 
 # Payment API View Simulation for processing payments for orders (POST request)
 class PaymentAPIView(APIView):
@@ -92,7 +93,7 @@ class PaymentAPIView(APIView):
                 # Order fulfillment on successful payment
                 # mark as paid
                 order.paid = True
-                order.save()
+                
                 order_items = OrderItem.objects.filter(order=order)
                 
                 # Create a list to store the item details
@@ -112,7 +113,15 @@ class PaymentAPIView(APIView):
                     "created_at": order.created_at,
                     "items": item_details  # Add the list of item details
                 }
-                
+                # Send confirmation email
+                subject = f"Hesham Store Order Confirmation - #{order.id}"
+                to_email = order.customer.email
+                text_content = "Your order confirmation email."  # Optional plain text content
+                html_content = render_to_string('store/order_confirmation.html', {'order_data':order_data})
+                # Assuming you have the actual email address in a variable named 'to_email'
+                send_mail(subject, '', 'mohamed9999ah@gmail.com', [to_email], html_message=html_content)
+                # Save the order
+                order.save()
                 response_data = {
                 "message": "Payment successful",
                 "order_data": order_data
