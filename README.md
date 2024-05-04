@@ -6,15 +6,15 @@ This documentation provides instructions on setting up and running the Order Pro
 ## Required Feature
 -**Stock Management** Implement functionality to validate the availability of products in the store's inventory when placing an order. Ensure that the system updates the stock count accordingly after each successful order.
 
--**Payment Processing: Integrate with a mock payment gateway to simulate payment processing. Upon successful payment, mark the order as paid and proceed with order fulfillment.
+-**Payment Processing** Integrate with a mock payment gateway to simulate payment processing. Upon successful payment, mark the order as paid and proceed with order fulfillment.
 
 -**Order Confirmation Emails** Sending order confirmation emails to customers after a successful purchase. The email has details the order ID, order date, purchased items (name, price, quantity, total price), and total amount of the order.
 
 -**Error Handling** Managing any issues that may occur during the order processing flow, such as stock unavailability or payment failures.
 
-- **Containerization**: Creating a Dockerfile to package the application into a container.
+-**Containerization** Creating a Dockerfile to package the application into a container.
 
-- **Repository Integration**: Push the built Docker image to (Docker Hub) you will see DockerHub link in end of file.
+-**Repository Integration**: Push the built Docker image to (Docker Hub) you will see DockerHub link in end of file.
 
 ## Additional Features
 - **User Authentication:** Basic user authentication is implemented to ensure only registered users can place order (JWT).
