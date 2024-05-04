@@ -13,6 +13,9 @@ RUN pip install --upgrade pip
 # Install Python dependencies
 RUN pip install -r requirements.txt
 
+# Install djangorestframework_simplejwt
+Run pip install djangorestframework_simplejwt
+
 # Copy the rest of your Django project code into the container
 COPY . .
 
