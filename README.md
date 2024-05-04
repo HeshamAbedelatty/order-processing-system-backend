@@ -3,6 +3,23 @@
 ## Introduction
 This documentation provides instructions on setting up and running the Order Processing System, a simplified solution for managing orders in an online store. The system handles various aspects of order processing, including stock management, payment processing, sending order confirmation emails, and error handling.
 
+## Required Feature
+-**Stock Management** Implement functionality to validate the availability of products in the store's inventory when placing an order. Ensure that the system updates the stock count accordingly after each successful order.
+
+-**Payment Processing: Integrate with a mock payment gateway to simulate payment processing. Upon successful payment, mark the order as paid and proceed with order fulfillment.
+
+-**Order Confirmation Emails** Sending order confirmation emails to customers after a successful purchase. The email has details the order ID, order date, purchased items (name, price, quantity, total price), and total amount of the order.
+
+-**Error Handling** Managing any issues that may occur during the order processing flow, such as stock unavailability or payment failures.
+
+- **Containerization**: Creating a Dockerfile to package the application into a container.
+
+- **Repository Integration**: Push the built Docker image to (Docker Hub) you will see DockerHub link in end of file.
+
+## Additional Features
+- **User Authentication:** Basic user authentication is implemented to ensure only registered users can place order (JWT).
+- **Customization:** Email templates for order confirmation emails can be customized. (by making Html file for email)
+
 ## Setup
 
 ### Docker Setup
@@ -62,6 +79,11 @@ The Order Processing System relies on the following dependencies:
 ## Endpoints
 ### Postman Documentation
 For detailed documentation and testing of the endpoints, refer to the [Postman documentation](https://www.postman.com/winter-meteor-327606/workspace/appgain-backendtask/collection/31151980-17fc9f0b-5c38-46d6-ab25-2a0e2cbe5893?action=share&creator=31151980).
+note that it may not be opened in Microsoft Edge. open it in Chrome.
+
+## admin App:
+
+### you can open admin page by email:hesham@gmail.com , password: hesham2002
 
 ### accounts App:
 
@@ -343,8 +365,5 @@ This is the Docker Hub repository containing the latest Docker image of the Orde
 [Docker Hub Submission](https://hub.docker.com/layers/heshamabedelatty/orderprocessingsystem/latest/images/sha256:eb6c8e565458978e28e175ba9a8b1f4a0ed519b2b416e87eb97b186a02ede107?uuid=6FE18E5C-6512-470D-8941-547B5CDC0CEE)
 
 
-## Additional Features
-- **User Authentication:** Basic user authentication is implemented to ensure only registered users can place orders.
-- **Customization:** Email templates for order confirmation emails can be customized.
 
 
