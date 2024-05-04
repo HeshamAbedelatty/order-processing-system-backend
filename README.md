@@ -60,7 +60,122 @@ The Order Processing System relies on the following dependencies:
 - Django REST Framework SimpleJWT: Library for JWT authentication.
 
 ## Endpoints
-### Store App
+### Postman Documentation
+For detailed documentation and testing of the endpoints, refer to the [Postman documentation](https://www.postman.com/winter-meteor-327606/workspace/appgain-backendtask/collection/31151980-17fc9f0b-5c38-46d6-ab25-2a0e2cbe5893?action=share&creator=31151980).
+
+### accounts App:
+
+#### 1. `/register/`
+
+- **Method:** POST
+- **Description:** Register a new user.
+- **Notes:**
+  - Requires providing email, username, and password in the request body.
+- **Example:**
+  ```http
+  POST /register/
+  ```
+  **Request Body:**
+  ```json
+  {
+    "email": "user@example.com",
+    "username": "example_user",
+    "password": "password123"
+  }
+  ```
+  **Response:**
+  ```json
+  {
+    "id": 1,
+    "email": "user@example.com",
+    "username": "example_user",
+    "phone_number": null
+  }
+  ```
+
+#### 2. `/login/`
+
+- **Method:** POST
+- **Description:** Log in with existing user credentials and obtain authentication tokens.
+- **Notes:**
+  - Requires providing email and password in the request body.
+- **Example:**
+  ```http
+  POST /login/
+  ```
+  **Request Body:**
+  ```json
+  {
+    "email": "user@example.com",
+    "password": "password123"
+  }
+  ```
+  **Response:**
+  ```json
+  {
+    "refresh": "refresh_token",
+    "access": "access_token"
+  }
+  ```
+
+#### 3. `/token/refresh/`
+
+- **Method:** POST
+- **Description:** Refresh the access token using the refresh token.
+- **Notes:**
+  - Requires providing the refresh token in the request body.
+- **Example:**
+  ```http
+  POST /token/refresh/
+  ```
+  **Request Body:**
+  ```json
+  {
+    "refresh": "refresh_token"
+  }
+  ```
+  **Response:**
+  ```json
+  {
+    "access": "new_access_token"
+  }
+  ```
+
+#### 4. `/user/`
+
+- **Method:** GET
+- **Description:** Retrieve details of the authenticated user.
+- **Notes:**
+  - Requires authentication using the access token.
+  - Returns details of the currently authenticated user.
+- **Example:**
+  ```http
+  GET /user/
+  ```
+  **Response:**
+  ```json
+  {
+    "id": 1,
+    "email": "user@example.com",
+    "username": "example_user",
+    "phone_number": null
+  }
+  ```
+
+Regarding setting up authentication in Postman, follow these steps:
+
+1. Open Postman and create a new request.
+2. Choose the appropriate HTTP method (e.g., POST for login/register endpoints).
+3. Enter the endpoint URL (e.g., `http://localhost:8000/login/`).
+4. Navigate to the "Headers" tab and add a new header with key `Content-Type` and value `application/json`.
+5. In the "Body" tab, select "raw" and choose JSON format.
+6. Enter the necessary request body parameters (e.g., email and password for login).
+7. Send the request to receive authentication tokens (access and refresh tokens).
+8. For subsequent requests that require authentication, add the access token to the request headers:
+   - Create a new header with key `Authorization` and value `Bearer <access_token>`.
+
+### Store App:
+
 #### 1. `/products/`
 
 - **Method:** GET
@@ -92,7 +207,7 @@ The Order Processing System relies on the following dependencies:
   ]
   ```
 
-### 2. `/place_order/`
+#### 2. `/place_order/`
 
 - **Method:** POST
 - **Description:** Place a new order.
@@ -124,7 +239,7 @@ The Order Processing System relies on the following dependencies:
   }
   ```
 
-### 3. `/orders/`
+#### 3. `/orders/`
 
 - **Method:** GET
 - **Description:** Retrieve a list of orders placed by the authenticated user.
@@ -148,7 +263,7 @@ The Order Processing System relies on the following dependencies:
   ]
   ```
 
-### 4. `/make_payment/`
+#### 4. `/make_payment/`
 
 - **Method:** POST
 - **Description:** Process payment for an order.
@@ -196,7 +311,7 @@ The Order Processing System relies on the following dependencies:
   }
   ```
 
-### 5. `/orders/`
+#### 5. `/orders/`
 
 - **Method:** GET
 - **Description:** Retrieve a list of orders belonging to the authenticated user.
@@ -220,9 +335,6 @@ The Order Processing System relies on the following dependencies:
     }
   ]
   ```
-
-### Postman Documentation
-For detailed documentation and testing of the endpoints, refer to the [Postman documentation](https://www.postman.com/winter-meteor-327606/workspace/appgain-backendtask/collection/31151980-17fc9f0b-5c38-46d6-ab25-2a0e2cbe5893?action=share&creator=31151980).
 
 ![Postman image](Postman.jpg)
 
