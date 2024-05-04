@@ -44,6 +44,7 @@ If you prefer not to use Docker, you can set up the project using a virtual envi
 3. Install dependencies:
    ```bash
    pip install -r requirements.txt
+   pip install djangorestframework_simplejwt
    ```
 
 4. Run the Django server:
