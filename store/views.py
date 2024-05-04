@@ -103,6 +103,9 @@ class PaymentAPIView(APIView):
                 # Check if the order belongs to the customer
                 if order.customer != request.user:
                     return Response({"message": "This order is not belogs to the customer"}, status=status.HTTP_403_FORBIDDEN)
+                # Check if the amount is equal to the order total amount
+                if request.data.get('amount') != order.total_amount:
+                    return Response({"message": "Amount is not equal to the order total amount"}, status=status.HTTP_400_BAD_REQUEST)
                 # Check if the order is already paid
                 if order.paid:
                     return Response({"message": "Order is already paid"}, status=status.HTTP_400_BAD_REQUEST)
